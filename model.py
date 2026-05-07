@@ -20,13 +20,15 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 def preprocess_data(df):
     df = df.copy()
 
-    # Handle null values
-    df.fillna(0, inplace=True)
+    num_cols = df.select_dtypes(include=['number']).columns
+    df[num_cols] = df[num_cols].fillna(0)
 
-    # Encode categorical columns
-    for col in df.select_dtypes(include=['object']).columns:
+    cat_cols = df.select_dtypes(include=['object', 'string']).columns
+    df[cat_cols] = df[cat_cols].fillna("Unknown")
+
+    for col in cat_cols:
         le = LabelEncoder()
-        df[col] = le.fit_transform(df[col])
+        df[col] = le.fit_transform(df[col].astype(str))
 
     return df
 
