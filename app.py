@@ -5,8 +5,8 @@ import seaborn as sns
 import pickle as pkl
 from model import train_model, detect_anomaly, anomaly_kmeans, risk_score
 
-scaler_path='scaler.pkl'
-model_path='model.pkl'
+scaler_path='anomaly/scaler.pkl'
+model_path='anomaly/model.pkl'
 
 with open(scaler_path,'rb') as file1:
  scaler = pkl.load(file1)
