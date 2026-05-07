@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle as pkl
-from model import train_model, detect_anomaly, anomaly_kmeans, risk_score
+from anomaly.model import train_model, detect_anomaly, anomaly_kmeans, risk_score
 
 scaler_path='scaler.pkl'
 model_path='model.pkl'
